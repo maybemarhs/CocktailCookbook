@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cocktailcookbook/services/networking.dart';
 
 class StartScreen extends StatefulWidget {
   static const id = 'start_screen';
@@ -7,6 +8,13 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
+  void getDrinkRecipe(String drinkName) async {
+    print('calling get Recipe');
+    var drinkData = await DrinkRecipe().getDrinkRecipe(drinkName);
+    print(drinkData);
+    return drinkData;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +31,9 @@ class _StartScreenState extends State<StartScreen> {
                   children: [
                     Expanded(
                       child: ReusableCard(
-                        onPress: () {},
+                        onPress: () {
+                          getDrinkRecipe('mojito');
+                        },
                         colour: Colors.black12,
                         cardChild: IconContent(
                             icon: Icons.local_drink, label: 'Mojito'),
@@ -31,10 +41,12 @@ class _StartScreenState extends State<StartScreen> {
                     ),
                     Expanded(
                       child: ReusableCard(
-                        onPress: () {},
+                        onPress: () {
+                          getDrinkRecipe('margarita');
+                        },
                         colour: Colors.black12,
                         cardChild: IconContent(
-                            icon: Icons.local_drink, label: 'Storm'),
+                            icon: Icons.local_drink, label: 'Margarita'),
                       ),
                     ),
                   ],
@@ -98,7 +110,7 @@ class ReusableCard extends StatelessWidget {
   ReusableCard({@required this.colour, this.cardChild, this.onPress});
   final Color colour;
   final Widget cardChild;
-  final Function onPress;
+  final Function() onPress;
 
   @override
   Widget build(BuildContext context) {
