@@ -1,3 +1,4 @@
+import 'package:cocktailcookbook/screens/recipe_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cocktailcookbook/services/networking.dart';
 
@@ -12,7 +13,9 @@ class _StartScreenState extends State<StartScreen> {
     print('calling get Recipe');
     var drinkData = await DrinkRecipe().getDrinkRecipe(drinkName);
     print(drinkData);
-    return drinkData;
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return RecipeScreen(drinkData);
+    }));
   }
 
   @override
@@ -58,18 +61,22 @@ class _StartScreenState extends State<StartScreen> {
                   children: [
                     Expanded(
                       child: ReusableCard(
-                        onPress: () {},
+                        onPress: () {
+                          getDrinkRecipe('ace');
+                        },
                         colour: Colors.black12,
-                        cardChild: IconContent(
-                            icon: Icons.local_drink, label: 'Mojito'),
+                        cardChild:
+                            IconContent(icon: Icons.local_drink, label: 'Ace'),
                       ),
                     ),
                     Expanded(
                       child: ReusableCard(
-                        onPress: () {},
+                        onPress: () {
+                          getDrinkRecipe('martini');
+                        },
                         colour: Colors.black12,
                         cardChild: IconContent(
-                            icon: Icons.local_drink, label: 'Storm'),
+                            icon: Icons.local_drink, label: 'Martini'),
                       ),
                     ),
                   ],
@@ -81,15 +88,19 @@ class _StartScreenState extends State<StartScreen> {
                   children: [
                     Expanded(
                       child: ReusableCard(
-                        onPress: () {},
+                        onPress: () {
+                          getDrinkRecipe('at&t');
+                        },
                         colour: Colors.black12,
-                        cardChild: IconContent(
-                            icon: Icons.local_drink, label: 'Mojito'),
+                        cardChild:
+                            IconContent(icon: Icons.local_drink, label: 'AT&T'),
                       ),
                     ),
                     Expanded(
                       child: ReusableCard(
-                        onPress: () {},
+                        onPress: () {
+                          getDrinkRecipe('storm');
+                        },
                         colour: Colors.black12,
                         cardChild: IconContent(
                             icon: Icons.local_drink, label: 'Storm'),
