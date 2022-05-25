@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cocktailcookbook/screens/welcome_screen.dart';
+import 'package:cocktailcookbook/screens/start_screen.dart';
 
 void main() {
   runApp(CocktailApp());
@@ -10,14 +11,10 @@ class CocktailApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        textTheme: TextTheme(
-          body1: TextStyle(color: Colors.black54),
-        ),
-      ),
       initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
+        StartScreen.id: (context) => StartScreen(),
       },
     );
   }

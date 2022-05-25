@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cocktailcookbook/screens/start_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const id = 'welcome_screen';
@@ -72,7 +73,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               colour: Colors.black54,
               title: 'Start',
               onPressed: () {
-                //Navigator.pushNamed(context, LoginScreen.id);
+                Navigator.pushNamed(context, StartScreen.id);
               },
             ),
           ],
